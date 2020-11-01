@@ -20,6 +20,7 @@ export const typeDefs = gql`
     numOfBeds: Int!
     numOfBaths: Int!
     rating: Int!
+    favorite: Boolean
   }
 
   type Query {
@@ -30,5 +31,6 @@ export const typeDefs = gql`
   type Mutation {
     createBooking(listingId: ID!, timestamp: String): Booking!
     deleteListing(id: ID!): Listing!
+    favoriteListing(id: ID!): Listing!
   }
 `;

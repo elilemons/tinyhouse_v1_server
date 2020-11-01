@@ -1,7 +1,7 @@
 import { Collection, ObjectId } from 'mongodb';
 
 export interface Booking {
-  _id: ObjectId; // Booking Id
+  _id: ObjectId;
   listingId: ObjectId;
   title: string;
   image: string;
@@ -19,6 +19,7 @@ export interface Listing {
   numOfBeds: number;
   numOfBaths: number;
   rating: number;
+  favorite: boolean;
 }
 
 export interface Database {
