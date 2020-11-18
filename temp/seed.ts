@@ -20,7 +20,8 @@ const seed = async () => {
         numOfGuests: 2,
         numOfBeds: 1,
         numOfBaths: 2,
-        rating: 5
+        rating: 5,
+        favorite: false,
       },
       {
         _id: new ObjectId(),
@@ -32,7 +33,8 @@ const seed = async () => {
         numOfGuests: 2,
         numOfBeds: 1,
         numOfBaths: 1,
-        rating: 4
+        rating: 4,
+        favorite: false,
       },
       {
         _id: new ObjectId(),
@@ -44,10 +46,10 @@ const seed = async () => {
         numOfGuests: 3,
         numOfBeds: 2,
         numOfBaths: 2,
-        rating: 3
-      }
+        rating: 3,
+        favorite: false,
+      },
     ];
-
 
     for (const listing of listings) {
       await db.listings.insertOne(listing);
