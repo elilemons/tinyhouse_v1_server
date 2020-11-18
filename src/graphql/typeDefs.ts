@@ -1,7 +1,16 @@
 import { gql } from 'apollo-server-express';
 
 export const typeDefs = gql`
-  type Listing{
+  type Booking {
+    id: ID!
+    listingId: ID!
+    title: String
+    image: String
+    address: String
+    timestamp: String!
+  }
+
+  type Listing {
     id: ID!
     title: String!
     image: String!
@@ -11,13 +20,17 @@ export const typeDefs = gql`
     numOfBeds: Int!
     numOfBaths: Int!
     rating: Int!
+    favorite: Boolean
   }
 
   type Query {
+    bookings: [Booking!]!
     listings: [Listing!]!
   }
 
   type Mutation {
+    createBooking(listingId: ID!, timestamp: String): Booking!
     deleteListing(id: ID!): Listing!
+    favoriteListing(id: ID!): Listing!
   }
 `;

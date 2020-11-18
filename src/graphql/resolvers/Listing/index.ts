@@ -30,6 +30,39 @@ export const listingResolvers: IResolvers = {
 
       return deleteResult.value;
     },
+    favoriteListing: async (
+      _root: undefined,
+      { id }: { id: string },
+      { db }: { db: Database }
+    ): Promise<Listing> => {
+      const listing = await db.listings.findOne({
+        _id: new ObjectId(id),
+      });
+
+      if (!listing) {
+        throw new Error('Listing not found');
+      }
+
+      const result = await db.listings.findOneAndUpdate(
+        {
+          _id: new ObjectId(id),
+        },
+        {
+          $set: {
+            favorite: !listing.favorite,
+          },
+        },
+        {
+          returnOriginal: false,
+        }
+      );
+
+      if (!result.value) {
+        throw new Error('Failed to favorite listing');
+      }
+
+      return result.value;
+    },
   },
   Listing: {
     id: (listing: Listing): string => listing._id.toString(),
