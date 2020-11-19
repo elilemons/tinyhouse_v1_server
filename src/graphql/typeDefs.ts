@@ -30,6 +30,7 @@ export const typeDefs = gql`
 
   type Mutation {
     createBooking(listingId: ID!, timestamp: String): Booking!
+    deleteBooking(id: ID!): Booking!
     deleteListing(id: ID!): Listing!
     favoriteListing(id: ID!): Listing!
   }
